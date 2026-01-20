@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 加上这几行确保高度占满 */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* 防止浏览器出现默认滚动条 */
+}
