@@ -1,7 +1,11 @@
 import React from 'react';
 import { GitBranch, Play, Download, Star, Plus, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // 1. 引入
+import { useAuthAction } from '../hooks/useAuthAction'; // 2. 引入
 
 export default function WorkflowMarket() {
+  const checkAuth = useAuthAction();
+  const navigate = useNavigate();
   const workflows = Array.from({ length: 9 }).map((_, i) => ({
     id: i,
     title: i % 2 === 0 ? "RAG 知识库问答流" : "多Agent协同写作流",
@@ -11,6 +15,13 @@ export default function WorkflowMarket() {
     stars: 85 + i,
     author: "AI Lab Team"
   }));
+
+  const handleCreateClick = () => {
+    checkAuth(() => {
+      // 只有登录后才会执行这里
+      navigate('/studio/create-workflow'); // 跳转到私有的创建页
+    });
+  };
 
   return (
     <div className="w-full pb-32">
@@ -35,7 +46,7 @@ export default function WorkflowMarket() {
           {/* 右侧：按钮区 */}
           {/* flex-shrink-0 防止按钮被挤压 */}
           <div className="flex-shrink-0">
-            <button className="group flex items-center gap-2 bg-blue-600 text-white px-6 py-3.5 rounded-xl font-bold hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-blue-200">
+            <button onClick={handleCreateClick} className="group flex items-center gap-2 bg-blue-600 text-white px-6 py-3.5 rounded-xl font-bold hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-blue-200">
               <Plus size={20} strokeWidth={3} />
               创建我的 Workflow
               <ArrowRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
