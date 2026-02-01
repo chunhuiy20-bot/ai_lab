@@ -81,8 +81,10 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           command_timeout: 30m
           script: |
+            mkdir -p /opt/ai_lab
             cd /opt/ai_lab
-            docker pull ghcr.io/${{ github.repository }}:latest
+            curl -o docker-compose.yml https://raw.githubusercontent.com/${{ github.repository }}/main/docker-compose.yml
+            docker compose pull
             docker compose down
             docker compose up -d
             docker image prune -f
