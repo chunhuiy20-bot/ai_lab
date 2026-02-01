@@ -79,11 +79,12 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
+          command_timeout: 30m
           script: |
             cd /opt/ai_lab
             docker pull ghcr.io/${{ github.repository }}:latest
-            docker-compose down
-            docker-compose up -d
+            docker compose down
+            docker compose up -d
             docker image prune -f
 
 
