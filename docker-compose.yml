@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ai-lab:
+    image: ghcr.io/chunhuiy20-bot/ai_lab:latest
+    container_name: ai_lab
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
