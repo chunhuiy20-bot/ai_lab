@@ -26,7 +26,7 @@ export default function Lab() {
           <div className="max-w-2xl">
             <h1 className="text-4xl font-extrabold text-slate-900 mb-2">AI 应用实验室</h1>
             <p className="text-slate-500 text-lg leading-relaxed">
-              在这里构建、测试和发布你的下一代 AI 应用。
+              在这里构建、测试和发布你的下一代 AI 应用。XXXXXX阿达说的
               <br className="hidden md:block" />
               汇聚全球开发者的创新实验，探索 LLM 能力边界。
             </p>

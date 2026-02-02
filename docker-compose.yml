@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   ai-lab:
-    image: ghcr.io/chunhuiy20-bot/ai_lab:latest
-    container_name: ai_lab
+    image: ghcr.io/chunhuiy20-bot/ai_lab:${IMAGE_TAG:-latest}
+    container_name: ai_lab_${IMAGE_TAG:-latest}
     ports:
       - "3001:80"
     restart: unless-stopped
