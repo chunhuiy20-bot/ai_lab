@@ -33,8 +33,8 @@ jobs:
       - name: 构建打包
         run: npm run build
         env:
-          # dev 分支使用 /ai_lab-dev/，main 分支使用 /ai_lab/
-          VITE_BASE_PATH: ${{ github.base_ref == 'dev' && '/ai_lab-dev/' || '/ai_lab/' }}
+          # dev 和 main 分支都使用 /ai_lab/
+          VITE_BASE_PATH: '/ai_lab/'
 
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
